@@ -101,6 +101,7 @@ window.onload = function () {
   $("#input").keyup(function(e){
     var letters = $("#input").val().toLowerCase().replace(/[^a-z]/g, '');
     var notes = letters.replace(/[a-z]/g, function(m){
+
       return lettermap[m] + " ";
     });
     // console.log(letters, notes);
@@ -151,6 +152,7 @@ window.onload = function () {
  <center>atomicprofessionalumpire@gmail.com</center>
  <center>&copy; 2016 Thomas J. Genco</center>
  <center><a href="https://www.facebook.com/thomas.genco.5">TJ Genco</a></center>
+  <center>All work is either original or to be memorized</center>
  </footer>
 </body>
 </html>
