@@ -1,14 +1,151 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Atomic Professional Umpire</title>
+  <link rel="shortcut icon" href="/favicon(1).ico" type="image/x-icon">
+  <link rel="icon" href="/favicon(1).ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- polyfill -->  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+   <!-- midi.js package -->
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/audioDetect.js" type="text/javascript"></script>
+   <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/gm.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/loader.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/util/dom_request_xhr.js" type="text/javascript"></script>  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/util/dom_request_script.js" type="text/javascript"></script>
 </head>
 <body>
 <center><h1>Atomic Professional Umpire&copy;</h1></center>  
 <center><h1>The Music Theory Sport</h1></center> 
 <center><img src="http://i.imgur.com/IrFrdEz.jpg" alt="Atomic" style="width:400px;height:400px;"></center>
 <center><h1>Waves Matter In Space</h1></center>
-<br>
+<center><h1>34, 725 points</h1></center> 
+<center><h1>The Bounce Demonstration=35 (A)...#14_490 Points</h1></center>
+<center><h1>The Simple Demonstration=33 (E)...#24_792 Points</h1><center>
+<center><h1>The Game Demonstration=28 (I)...#491_13,748 Points</h1></center>
+<center><h1>The Krietor Demonstration=56 (O)...#259_14,504 Points</h1></center>
+<center><h1>The Diamond Demonstration=28 (U)...#177_4,956 Points</h1></center>
+<center><h1>The Disc Demonstration=10 (P)... #7_70 Points</h1></center>
+<center><h1>The Musafisic Demonstration=33 (F)...#5_165 Points</h1></center><br>
+<center><img src="http://i.imgur.com/jejLmg1.jpg" alt="Vowel Sequence" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/T9SVGEk.jpg" alt="7th Hand Sign" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/5C3J98j.jpg" alt="Rhombus" style="width:100px;height:250px;border:0;"></center><br>  
+<center><img src="http://i.imgur.com/7L5hWQs.jpg" alt="Phi and Pi on Graph" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/7q8CHkr.jpg" alt="Even and Odd on Graph" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/HG8Hs3v.jpg" alt="The Z" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/6f8P9pv.jpg" alt="Gematria" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/7S5lckn.jpg" alt="Light" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/3ZXnSP2.jpg" alt="Base 10 Square" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/Rz6o9Px.jpg" alt="XYZ" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/Rz6o9Px.jpg" alt="Rectangle" style="width:120px;height:50px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/lZojjMQ.jpg" alt="Crux" style="width:100px;height:250px;border:0;"></center><br>
+<center><img src="http://i.imgur.com/WftVkVw.jpg" alt="Square" style="width:100px;height:250px;border:0;"></center><br>  
+ <div class="container">
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label for="input">Text</label>
+      <textarea name="input" id="input" cols="30" rows="10" class="form-control">Atomic Professional Umpire</textarea>
+    </div>
+    <div class="col-sm-6">
+      <label for="notes">Notes</label>
+      <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" disabled></textarea>
+    </div>
+  </div>
+  <br>
+  <a href="#" id="play" class="btn btn-success btn-lg" style="width: 100%">Play</a>
+</div>
+<script type="text/javascript">
+window.duration = 0.7;window.velocity = 127;
+var lettermap = {
+  "h": "c",
+  "f": "c#",
+  "m": "c#",
+  "a": "2m7",
+  "n": "d",
+  "e": "3m7",
+  "k": "d#",
+  "b": "d#",
+  "i": "4M7",
+  "t": "e",
+  "g": "e",
+  "o": "5D7",
+  "c": "f",
+  "r": "f",
+  "u": "6m7",
+  "s": "f#",
+  "d": "f#",
+  "l": "g",
+  "p": "g#",
+  "j": "g#",
+  "x": "a",
+  "v": "a",
+  "w": "a#",
+  "z": "a#",
+  "q": "b",
+  "y": "c",
+}
+var notemap = {
+  "c": 48,
+  "c#": 49,
+  "d": 50,
+  "d#": 51,
+  "e": 52,
+  "f": 53,
+  "f#": 54,
+  "g": 55,
+  "g#": 56,
+  "a": 57,
+  "a#": 58,
+  "b": 59,}
+window.onload = function () {
+  $("#input").keyup(function(e){
+    var letters = $("#input").val().toLowerCase().replace(/[^a-z]/g, '');
+    var notes = letters.replace(/[a-z]/g, function(m){
+      return lettermap[m] + " ";
+    });
+    // console.log(letters, notes);
+    $("#notes").val(notes);
+  });
+  $("#input").keyup();
+  $("#play").click(function(e){
+    e.preventDefault();
+    MIDI.setVolume(0, 127);
+    var sequence = $("#notes").val().split(' ');
+    for(var i=0; i<sequence.length; i++){
+      var notes = sequence[i].split('+');
+      for(var j=0; j<notes.length; j++){
+        var note = notemap[notes[j]];
+        if(note){
+          // console.log('playing ', note);
+          var delay = i*window.duration;
+          console.log(delay);
+          MIDI.noteOn(0, note, window.velocity, delay);
+          MIDI.noteOff(0, note, delay + window.duration);
+        }else{
+          console.error("no note for", notes[j]);
+        }
+      }
+    }
+  })
+  MIDI.loadPlugin({
+    soundfontUrl: "https://cdn.rawgit.com/mudcube/MIDI.js/master/examples/soundfont/",
+    instrument: "acoustic_grand_piano",
+    onprogress: function(state, progress) {
+      console.log(state, progress);
+    },
+    onsuccess: function() {
+      console.log("MIDI loaded");
+    }
+  });
+};
+</script><br>
 </body>
 </html>
