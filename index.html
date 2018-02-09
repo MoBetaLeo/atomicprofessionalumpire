@@ -4,7 +4,25 @@
 	<title>APU</title>
   <link rel="shortcut icon" href="/favicon(1).ico" type="image/x-icon">
   <link rel="icon" href="/favicon(1).ico" type="image/x-icon">
-  <link rel="stylesheet" 
+  <link rel="stylesheet"
+	
+  <link rel="shortcut icon" href="/favicon(1).ico" type="image/x-icon">
+  <link rel="icon" href="/favicon(1).ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- polyfill -->  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+   <!-- midi.js package -->
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/audioDetect.js" type="text/javascript"></script>
+   <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/gm.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/loader.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/util/dom_request_xhr.js" type="text/javascript"></script>  <script src="https://cdn.rawgit.com/mudcube/MIDI.js/master/js/util/dom_request_script.js" type="text/javascript"></script>
+
 </head>
 <body>
 <center><h4>Hail Yahuwah</h4></center>
@@ -48,7 +66,108 @@
 <center><tr>
 </table></center><br>
 <center><h4>Invite ONLY</h4></center>
-<center><h4>242, 128 Points</h4></center>	
+<center><h4>242, 128 Points</h4></center>
+	<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label for="input">Text</label>
+      <textarea name="input" id="input" cols="30" rows="10" class="form-control">Atomic Professional Umpire</textarea>
+    </div>
+    <div class="col-sm-6">
+      <label for="notes">Notes</label>
+      <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" disabled></textarea>
+    </div>
+  </div>
+  <br>
+  <a href="#" id="play" class="btn btn-success btn-lg" style="width: 100%">Play</a>
+</div>
+<script type="text/javascript">
+window.duration = 0.7;window.velocity = 127;
+var lettermap = {
+  "h": "c",
+  "f": "c#",
+  "m": "c#",
+  "a": "2m7",
+  "n": "d",
+  "e": "3m7",
+  "k": "d#",
+  "b": "d#",
+  "i": "4M7",
+  "t": "e",
+  "g": "e",
+  "o": "5D7",
+  "c": "f",
+  "r": "f",
+  "u": "6m7",
+  "s": "f#",
+  "d": "f#",
+  "l": "g",
+  "p": "g#",
+  "j": "g#",
+  "x": "a",
+  "v": "a",
+  "w": "a#",
+  "z": "a#",
+  "q": "b",
+  "y": "c",
+}
+var notemap = {
+  "c": 48,
+  "c#": 49,
+  "d": 50,
+  "d#": 51,
+  "e": 52,
+  "f": 53,
+  "f#": 54,
+  "g": 55,
+  "g#": 56,
+  "a": 57,
+  "a#": 58,
+  "b": 59,}
+window.onload = function () {
+  $("#input").keyup(function(e){
+    var letters = $("#input").val().toLowerCase().replace(/[^a-z]/g, '');
+    var notes = letters.replace(/[a-z]/g, function(m){
+      return lettermap[m] + " ";
+    });
+    // console.log(letters, notes);
+    $("#notes").val(notes);
+  });
+  $("#input").keyup();
+  $("#play").click(function(e){
+    e.preventDefault();
+    MIDI.setVolume(0, 127);
+    var sequence = $("#notes").val().split(' ');
+    for(var i=0; i<sequence.length; i++){
+      var notes = sequence[i].split('+');
+      for(var j=0; j<notes.length; j++){
+        var note = notemap[notes[j]];
+        if(note){
+          // console.log('playing ', note);
+          var delay = i*window.duration;
+          console.log(delay);
+          MIDI.noteOn(0, note, window.velocity, delay);
+          MIDI.noteOff(0, note, delay + window.duration);
+        }else{
+          console.error("no note for", notes[j]);
+        }
+      }
+    }
+  })
+  MIDI.loadPlugin({
+    soundfontUrl: "https://cdn.rawgit.com/mudcube/MIDI.js/master/examples/soundfont/",
+    instrument: "acoustic_grand_piano",
+    onprogress: function(state, progress) {
+      console.log(state, progress);
+    },
+    onsuccess: function() {
+      console.log("MIDI loaded");
+    }
+  });
+};
+</script><br>
+
 <center><h4>&copy;</h4></center
 </body>
 </html>
